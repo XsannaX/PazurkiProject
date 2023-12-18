@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="col-md-6 offset-md-3">
+
+Name: {{ adoption_record.name }}<br/>
+Surname: {{ adoption_record.surname }}<br/>
+Telephone: {{ adoption_record.telephone }}<br/>
+Animal: {{ adoption_record.animal }}<br/>
+Status: {{ adoption_record.status }}<br/>
+
+
+<br/><br/>
+<a href="{% url 'view_adoption_form' %}" class="btn btn-secondary">Back</a>
+</div>
+{% endblock %}

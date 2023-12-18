@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="col-md-6 offset-md-2">
+<br>
+<table class="table table-striped table-hover table-bordered">
+	<thead class="table-dark">
+		<tr>
+			<th scope="col">Name</th>
+			<th scope="col">Breed</th>
+			<th scope="col">Species</th>
+			<th scope="col">Sex</th>
+			<th scope="col">Age</th>
+			<th scope="col">Size</th>
+			<th scope="col">vaccinations</th>
+			<th scope="col">sterilization</th>
+			<th scope="col">friendly_kids</th>
+			<th scope="col">friendly_others</th>
+			<th scope="col">status</th>
+			<th scope="col">ID</th>
+		</tr>
+	</thead>
+	<tbody>
+
+
+	{% if records %}
+		{% for record in records %}
+			<tr>
+				<td>{{ record.name }}</td>
+				<td>{{ record.breed }}</td>
+				<td>{{ record.species }}</td>
+				<td>{{ record.sex }}</td>
+				<td>{{ record.age }}</td>
+				<td>{{ record.size }}</td>
+				<td>{{ record.vaccinations }}</td>
+				<td>{{ record.sterilization }}</td>
+				<td>{{ record.friendly_kids }}</td>
+				<td>{{ record.friendly_others }}</td>
+				<td>{{ record.status }}</td>
+				<td><a href="{% url 'animal' record.id_animal %}">{{ record.id_animal }}</td>
+			</tr>
+		{% endfor %}
+
+	{% endif %}
+	</tbody>
+</table>
+</div>
+
+
+
+{% endblock %}

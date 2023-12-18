@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="col-md-6 offset-md-3">
+
+{{ animal_record.name }}<br/>
+{{ animal_record.breed }}<br/>
+{{ animal_record.species }}<br/>
+{{ animal_record.sex }}<br/>
+{{ animal_record.age }}<br/>
+{{ animal_record.size }}<br/>
+{{ animal_record.vaccinations }}<br/>
+{{ animal_record.sterilization }}<br/>
+{{ animal_record.friendly_kids }}<br/>
+{{ animal_record.friendly_others }}<br/>
+{{ animal_record.status }}<br/>
+{{ animal_record.id_animal }}<br/>
+
+<br/><br/>
+<a href="{% url 'view_all_animals' %}" class="btn btn-secondary">Back</a>
+<a href="{% url 'delete_animal' animal_record.id_animal %}" class="btn btn-danger">Delete</a>
+<a href="{% url 'update_animal' animal_record.id_animal %}" class="btn btn-primary">Update</a>
+</div>
+{% endblock %}

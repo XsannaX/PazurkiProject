@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <title>hello</title>
+</head>
+<body>
+<h1>Home</h1>
+{% if profile %}
+    {% if request.user.id == profile.user.id %}
+            <a href="{% url 'add_profile' %}" class="btn btn-outline-secondary">Update Profile</a>
+    {% endif %}
+{% endif %}
+</body>
+
+{% endblock %}
