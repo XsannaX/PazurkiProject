@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block content %}
+<head>
+    <title>Connector Table</title>
+</head>
+<div class="col-md-6 offset-md-3">
+<body>
+<br>
+<div align="center">
+    <button onclick="showAllAnimals()">Show All Animals</button>
+    <button onclick="showMyAnimals()">Show My Animals</button>
+</div>
+<br>
+<table class="table table-bordered table-striped table-hover" id="animalTable">
+    <thead class="table-dark" align="center">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Animal</th>
+            <th scope="col">Worker</th>
+        </tr>
+    </thead>
+    <tbody class="table-group-divider">
+        {% for connector in all_animals %}
+        <tr align="center">
+            <td><a href="{% url 'connector' connector.id_connector %}">{{ connector.id_connector }}</td>
+            <td>{{ connector.animal.name }}</td>
+            <td contenteditable="true">{{ connector.worker.user.username }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<script>
+    function showAllAnimals() {
+        var table = document.getElementById("animalTable");
+        var rows = table.getElementsByTagName("tr");
+
+        for (var i = 1; i < rows.length; i++) {
+            rows[i].style.display = "";
+        }
+    }
+
+    function showMyAnimals() {
+        var table = document.getElementById("animalTable");
+        var rows = table.getElementsByTagName("tr");
+        var workerName = "{{ worker_name }}";
+
+        for (var i = 1; i < rows.length; i++) {
+            var workerCell = rows[i].getElementsByTagName("td")[2];
+            var showRow = (workerCell.textContent || workerCell.innerText) === workerName;
+            rows[i].style.display = showRow ? "" : "none";
+        }
+    }
+</script>
+
+</body>
+</div>
+
+
+{% endblock %}

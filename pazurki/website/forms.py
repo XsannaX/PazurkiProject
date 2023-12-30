@@ -2,26 +2,31 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth.admin import UserAdmin
-from .models import Workers, Adopt_form, Animal
+from .models import Workers, Adopt_form, Animal, Connector
 
 GENDER_CHOICES = (
+            ('', 'Gender'),
             ('Male', 'Male'),
             ('Female', 'Female'),
          )
 BOOL_YN = (
+        ('', '-----'),
         (True, 'Yes'),
         (False, 'No')
     )
 SIZE_CHOICES=(
+        ('', 'Size'),
         ('Small','Small'),
         ('Medium','Medium'),
         ('Big','Big'),
     )
 SPECIES_CHOICES=(
+        ('', 'Species'),
         ('Cat','Cat'),
         ('Dog','Dog'),
     )
 STATUS_CHOICES=(
+        ('', 'Status'),
         ('For adoption','For adoption'),
         ('Not available','Not available'),
     )
@@ -39,9 +44,9 @@ class Add_user(UserCreationForm):
 
     first_name = forms.CharField(label="", max_length=100, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Name'}))
     last_name = forms.CharField(label="", max_length=100, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Surname'}))
-    is_staff=forms.ChoiceField(label="",choices=BOOL_YN, widget=forms.Select(attrs={'class': 'form-control', 'placeholder': 'Staff'}))
-    is_active=forms.ChoiceField(label="",choices=BOOL_YN, widget=forms.Select(attrs={'class': 'form-control', 'placeholder': 'Active'}))
-    is_superuser=forms.ChoiceField(label="",choices=BOOL_YN, widget=forms.Select(attrs={'class': 'form-control', 'placeholder': 'Superuser'}))
+    is_staff=forms.ChoiceField(label="Is staff",choices=BOOL_YN, widget=forms.Select(attrs={'class': 'form-control', 'placeholder': 'Staff'}))
+    is_active=forms.ChoiceField(label="Is active",choices=BOOL_YN, widget=forms.Select(attrs={'class': 'form-control', 'placeholder': 'Active'}))
+    is_superuser=forms.ChoiceField(label="Is superuser",choices=BOOL_YN, widget=forms.Select(attrs={'class': 'form-control', 'placeholder': 'Superuser'}))
 
     class Meta:
         model = User
@@ -75,10 +80,10 @@ class UpdateUserForm(forms.ModelForm):
                                  widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Name'}))
     last_name = forms.CharField(label="", max_length=100,
                                 widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Surname'}))
-    is_staff=forms.ChoiceField(label="",choices=BOOL_YN, widget=forms.Select(attrs={'class': 'form-control', 'placeholder': 'Staff'}))
-    is_active = forms.ChoiceField(label="", choices=BOOL_YN,
+    is_staff=forms.ChoiceField(label="Is staff",choices=BOOL_YN, widget=forms.Select(attrs={'class': 'form-control', 'placeholder': 'Staff'}))
+    is_active = forms.ChoiceField(label="Is active", choices=BOOL_YN,
                                   widget=forms.Select(attrs={'class': 'form-control', 'placeholder': 'Active'}))
-    is_superuser = forms.ChoiceField(label="", choices=BOOL_YN,
+    is_superuser = forms.ChoiceField(label="Is superuser", choices=BOOL_YN,
                                      widget=forms.Select(attrs={'class': 'form-control', 'placeholder': 'Superuser'}))
 
     class Meta:
@@ -94,7 +99,6 @@ class UpdateProfileForm(forms.ModelForm):
         model = Workers
         fields = ['sex']
 
-
 #dodawanie nowego zwierzęcia
 class AddAnimal(forms.ModelForm):
     name=forms.CharField(required=True, widget=forms.widgets.TextInput(
@@ -108,16 +112,16 @@ class AddAnimal(forms.ModelForm):
                             widget=forms.Select(attrs={'class': 'form-control', 'placeholder': 'Sex'}))
     age = forms.IntegerField(required=True, widget=forms.widgets.NumberInput(attrs={"placeholder":"Age", "class":"form-control"}), label="")
     size = forms.ChoiceField(label="",choices=SIZE_CHOICES, widget=forms.Select(attrs={'class': 'form-control', 'placeholder': 'Size'}))
-    vaccinations =forms.ChoiceField(label="",choices=BOOL_YN, widget=forms.Select(attrs={'class': 'form-control', 'placeholder': 'vaccinations'}))
-    sterilization = forms.ChoiceField(label="",choices=BOOL_YN, widget=forms.Select(attrs={'class': 'form-control', 'placeholder': 'sterilization'}))
-    friendly_kids =forms.ChoiceField(label="",choices=BOOL_YN, widget=forms.Select(attrs={'class': 'form-control', 'placeholder': 'friendly_kids'}))
-    friendly_others = forms.ChoiceField(label="",choices=BOOL_YN, widget=forms.Select(attrs={'class': 'form-control', 'placeholder': 'friendly_others'}))
+    vaccinations =forms.ChoiceField(label="Vaccinations:",choices=BOOL_YN, widget=forms.Select(attrs={'class': 'form-control', 'placeholder': 'vaccinations'}))
+    sterilization = forms.ChoiceField(label="Sterilization:",choices=BOOL_YN, widget=forms.Select(attrs={'class': 'form-control', 'placeholder': 'sterilization'}))
+    friendly_kids =forms.ChoiceField(label="Friendly to kieds:",choices=BOOL_YN, widget=forms.Select(attrs={'class': 'form-control', 'placeholder': 'friendly_kids'}))
+    friendly_others = forms.ChoiceField(label="Friendly to others:",choices=BOOL_YN, widget=forms.Select(attrs={'class': 'form-control','placeholder': 'friendly_others'}))
 
     class Meta:
         model = Animal
         exclude = ("user",)
 
-#kwestionariusz adopcyjny
+#kwestionariusz adopcyjny edycja dla pracownikow tylko
 class Adopt(forms.ModelForm):
     name = forms.CharField(required=True, widget=forms.widgets.TextInput(
         attrs={"placeholder": "First Name", "class": "form-control"}), label="")
@@ -128,4 +132,16 @@ class Adopt(forms.ModelForm):
                             label="")
     class Meta:
         model = Adopt_form
-        exclude = ["status"]
+        exclude = ["user",]
+
+#kwestonariusz adopcyjny do wypelnienia bez pola statusu
+class UserAdopt(Adopt):
+    class Meta(Adopt.Meta):
+        exclude = ["status",]
+
+
+#update polaczenia pracownika ze zwierzeciem
+class WorkerUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Connector
+        fields = '__all__'

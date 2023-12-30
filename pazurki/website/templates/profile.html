@@ -13,11 +13,13 @@
             </button>
         </div>
     {% endif %}
-    <div class="col-md-6 offset-md-3">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <div class="col-md-6 offset-md-4">
+        <h1>Profile Page<i class="fa fa-paw" aria-hidden="true"></i></h1>
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form-row">
-                <div class="col-md-5">
+                <div class="col-md-8">
                     <div class="form-group">
                         <label class="small mb-1">Username:</label>
                             {{ user_form.username }}
@@ -39,8 +41,7 @@
                 </div>
             </div>
             <br><br>
-            <button type="submit" class="btn btn-dark btn-lg">Save Changes</button>
-            <button type="reset" class="btn btn-dark btn-lg">Reset</button>
+            <button type="submit" class="btn btn-primary btn-lg">Save Changes</button>
         </form>
     </div>
 {% endblock content %}

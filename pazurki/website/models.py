@@ -10,12 +10,10 @@ class Workers(models.Model):
     )
     user = models.OneToOneField(User,null=True, on_delete=models.CASCADE)
     id_worker = models.AutoField(primary_key=True)
-    #name = models.CharField(max_length=30, blank=True, null=True)
-    #surname = models.CharField(max_length=50, blank=True, null=True)
     sex = models.CharField(max_length=6,choices=GENDER_CHOICES,null=True,blank=True)
 
-    #def __str__(self):
-    #    return self.name
+    def __str__(self):
+       return self.user.username
 
     #class Meta:
         #unique_together=('id_worker','user')
@@ -29,7 +27,7 @@ def create_profile(sender, instance, created, **kwargs):
 
 post_save.connect(create_profile, sender=User)
 
-#zwierzę
+#zwierze
 class Animal(models.Model):
     BOOL_YN = (
         (True, 'Yes'),
@@ -55,15 +53,15 @@ class Animal(models.Model):
     id_animal = models.AutoField(primary_key=True)
     name = models.CharField(max_length=20,null=True)
     status = models.CharField(max_length=20,choices=STATUS_CHOICES,null=True)
-    breed = models.CharField(max_length=45,null=True)
+    breed = models.CharField(max_length=30,null=True)
     species = models.CharField(max_length=3,choices=SPECIES_CHOICES,null=True)
     sex = models.CharField(max_length=6,choices=GENDER_CHOICES,null=True)
     age = models.IntegerField(null=True)
     size = models.CharField(max_length=6,choices=SIZE_CHOICES,null=True)
-    vaccinations = models.BooleanField(choices=BOOL_YN,null=True)
-    sterilization = models.BooleanField(choices=BOOL_YN,null=True)
-    friendly_kids = models.BooleanField(choices=BOOL_YN,null=True)
-    friendly_others = models.BooleanField(choices=BOOL_YN,null=True)
+    vaccinations = models.BooleanField(choices=BOOL_YN,null=True,verbose_name='Vaccinated')
+    sterilization = models.BooleanField(choices=BOOL_YN,null=True,verbose_name='Sterilized')
+    friendly_kids = models.BooleanField(choices=BOOL_YN,null=True,verbose_name='Friendly to kids')
+    friendly_others = models.BooleanField(choices=BOOL_YN,null=True,verbose_name='Friendly to other animals')
 
     def __str__(self):
         return self.name
@@ -75,7 +73,7 @@ class Connector(models.Model):
     worker=models.ForeignKey(Workers,on_delete=models.SET_NULL,blank=True, null=True)
 
     def __str__(self):
-        return self.animal.name #+ ' ' + self.worker.name
+        return self.animal.name
 
 #automatyczne stworzenie polaczenia po dodaniu zwierzecia
 def create_connection(sender, instance, created, **kwargs):
@@ -94,18 +92,12 @@ class Adopt_form(models.Model):
     name = models.CharField(max_length=30,null=True)
     surname = models.CharField(max_length=50,null=True)
     telephone = models.CharField(max_length=9,null=True)
-    id_adoptee=models.IntegerField(max_length=5,null=True,help_text='Please enter the ID of the animal you are interested in')
     animal = models.ForeignKey(Animal, on_delete=models.CASCADE, blank=True, null=True)
     status = models.CharField(max_length=12,choices=STATUS,null=True,default='Processing')
 
     def __str__(self):
         return self.name + ' ' + self.surname
 
-    # @property
-    # def update_animal(self):
-    #     my_animal=self.animal
-    #     my_animal.name='Not available'
-    #     self.save()
 
 #po zmienie statusu na 'adoptowany' zmienia status zwierzęcia na 'not available' oraz dodaje historie adopcji
     def save(self, *args, **kwargs):
@@ -121,15 +113,7 @@ class Adopt_form(models.Model):
                 "status": 'Not available',
             }
         )
-    # def create_history(sender,instance,created,**kwargs):
-    #     if created:
-    #         Adoption_history.objects.get_or_create(form=instance)
-#automatyczne stworzenie historii adopcji po zmianie statusu w adopt_form
-# def create_history(sender, instance, **kwargs):
-#     if Adopt_form.status=='Adopted':
-#         new_adoption = Adoption_history(form=instance)
-#         new_adoption.save()
-# post_save.connect(create_history, sender=Adopt_form)
+
 
 #historia adopcji
 class Adoption_history(models.Model):

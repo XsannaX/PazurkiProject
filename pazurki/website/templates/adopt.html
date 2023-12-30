@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
+{%load static%}
 {% block content %}
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<body style="background-image: url('{%static 'img/opt6.jpg' %}');">
 <div class="col-md-6 offset-md-3">
-<h1>Add Record</h1>
+<h1>Adoption Form<i class="fa fa-paw" aria-hidden="true"></i></h1>
 <br/>
 
 <form method="POST" action="{% url 'adopt' %}">
@@ -11,11 +13,11 @@
 	{{ form.as_p }}
 
 <br/>
-  <button type="submit" class="btn btn-secondary">Add Record</button>
+  <button type="submit" class="btn btn-primary">Submit</button>
    <a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
 
 </form>
 
 </div>
-
+</body>
 {% endblock %}

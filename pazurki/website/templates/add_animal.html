@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
+{%load static%}
 {% block content %}
+<body style="background-color:rgb(255, 249, 246);">
 <div class="col-md-6 offset-md-3">
-<h1>Add new animal:3</h1>
+
+<h1>Add new animal</h1>
 <br/>
 
 <form method="POST" action="{% url 'add_animal' %}">
@@ -15,4 +18,6 @@
 
 </form>
 </div>
+<br><br>
+</body>
 {% endblock %}

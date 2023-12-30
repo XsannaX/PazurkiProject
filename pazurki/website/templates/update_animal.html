@@ -2,7 +2,7 @@
 {% block content %}
 
 <div class="col-md-6 offset-md-3">
-<h1>Update Animal Record</h1>
+<h1>Update Animal</h1>
 <br/>
 
 <form method="POST">
@@ -12,10 +12,10 @@
 
 <br/>
   <button type="submit" class="btn btn-primary">Update Record</button>
+	<a href="{% url 'view_all_animals'  %}" class="btn btn-secondary">Back</a>
 
 </form>
-
-
+<br><br>
 </div>
 
 {% endblock %}

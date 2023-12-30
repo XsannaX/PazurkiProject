@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="col-md-6 offset-md-3">
+
+<h1>Adoption History<i class="fa fa-paw" aria-hidden="true"></i></h1>
+<br/>
+<table class="table table-bordered table-striped table-hover">
+    <thead class="table-dark" align="center">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Animal</th>
+            <th scope="col">Adopting person</th>
+        </tr>
+    </thead>
+    <tbody class="table-group-divider">
+        {% for record in history %}
+        <tr align="center">
+            <td>{{ record.id_adoption_history }}</td>
+            <td>{{ record.form.animal.name }}</td>
+            <td> {{ record.form.name}} {{record.form.surname}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+</div>
+
+{% endblock %}

@@ -1,15 +1,26 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="col-md-6 offset-md-3">
 
-Name: {{ adoption_record.name }}<br/>
-Surname: {{ adoption_record.surname }}<br/>
-Telephone: {{ adoption_record.telephone }}<br/>
-Animal: {{ adoption_record.animal }}<br/>
-Status: {{ adoption_record.status }}<br/>
+<body>
+<br><br>
+<div class="container-fluid" align="center" >
 
+<div class="card" align="center" style="width: 18rem;">
+  <div class="card-header">
+    {{ adoption_record.name }} {{ adoption_record.surname }}
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Telephone: {{ adoption_record.telephone }}</li>
+    <li class="list-group-item">Animal: {{ adoption_record.animal }}</li>
+  </ul>
+    <div class="card-footer">
+    Status: {{ adoption_record.status }}
+  </div>
+</div>
 
 <br/><br/>
+<a href="{% url 'update_adoption_form' adoption_record.id_adopt_form %}" class="btn btn-primary">Update</a>
 <a href="{% url 'view_adoption_form' %}" class="btn btn-secondary">Back</a>
 </div>
+</body>
 {% endblock %}

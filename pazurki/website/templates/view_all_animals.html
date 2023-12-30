@@ -3,14 +3,14 @@
 
 <div class="col-md-6 offset-md-2">
 <br>
-<table class="table table-striped table-hover table-bordered">
+<table id="grid" class="table table-striped table-hover table-bordered">
 	<thead class="table-dark">
 		<tr>
-			<th scope="col">Name</th>
-			<th scope="col">Breed</th>
+			<th data-type="string" scope="col">Name▲▼</th>
+			<th data-type="string" scope="col">Breed▲▼</th>
 			<th scope="col">Species</th>
 			<th scope="col">Sex</th>
-			<th scope="col">Age</th>
+			<th data-type="number" scope="col">Age▲▼</th>
 			<th scope="col">Size</th>
 			<th scope="col">vaccinations</th>
 			<th scope="col">sterilization</th>
@@ -45,7 +45,41 @@
 	</tbody>
 </table>
 </div>
+<script>
 
+    grid.onclick = function(e) {
+      if (e.target.tagName != 'TH') return;
+
+      let th = e.target;
+      sortGrid(th.cellIndex, th.dataset.type);
+    };
+
+    function sortGrid(colNum, type) {
+      let tbody = grid.querySelector('tbody');
+
+      let rowsArray = Array.from(tbody.rows);
+
+      let compare;
+
+      switch (type) {
+        case 'number':
+          compare = function(rowA, rowB) {
+            return rowA.cells[colNum].innerHTML - rowB.cells[colNum].innerHTML;
+          };
+          break;
+        case 'string':
+          compare = function(rowA, rowB) {
+            return rowA.cells[colNum].innerHTML > rowB.cells[colNum].innerHTML ? 1 : -1;
+          };
+          break;
+      }
+
+      // sort
+      rowsArray.sort(compare);
+
+      tbody.append(...rowsArray);
+    }
+  </script>
 
 
 {% endblock %}

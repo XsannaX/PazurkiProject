@@ -1,19 +1,26 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="col-md-6 offset-md-3">
+<div  class="col-md-6 offset-md-5">
 
-{{ animal_record.name }}<br/>
-{{ animal_record.breed }}<br/>
-{{ animal_record.species }}<br/>
-{{ animal_record.sex }}<br/>
-{{ animal_record.age }}<br/>
-{{ animal_record.size }}<br/>
-{{ animal_record.vaccinations }}<br/>
-{{ animal_record.sterilization }}<br/>
-{{ animal_record.friendly_kids }}<br/>
-{{ animal_record.friendly_others }}<br/>
-{{ animal_record.status }}<br/>
-{{ animal_record.id_animal }}<br/>
+<div  class="card" style="width: 18rem;">
+  <div align="center" class="card-header">
+   <h5 class="card-title">{{ animal_record.name }}</h5>
+   <h6 class="card-subtitle mb-2 text-body-secondary">{{ animal_record.id_animal }}</h6>
+  </div>
+  <ul class="list-group list-group-flush">
+      <li class="list-group-item">Species: {{animal_record.species }} </li>
+    <li class="list-group-item">Breed: {{ animal_record.breed }}</li>
+    <li class="list-group-item">Sex: {{ animal_record.sex }}</li>
+    <li class="list-group-item">Age: {{ animal_record.age }}</li>
+      <li class="list-group-item">Size: {{ animal_record.size }}</li>
+      <li class="list-group-item">Vaccinations: {{ animal_record.vaccinations }}</li>
+      <li class="list-group-item">Sterilization: {{ animal_record.sterilization }}</li>
+      <li class="list-group-item">Friendly to kids: {{ animal_record.friendly_kids }}</li>
+      <li class="list-group-item">Friendly to other animals: {{ animal_record.friendly_others }}</li>
+      <li class="list-group-item">Status: {{ animal_record.status }} </li>
+  </ul>
+</div>
+
 
 <br/><br/>
 <a href="{% url 'view_all_animals' %}" class="btn btn-secondary">Back</a>
