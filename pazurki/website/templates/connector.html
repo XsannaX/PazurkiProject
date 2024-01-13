@@ -2,20 +2,20 @@
 {% block content %}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="col-md-6 offset-md-3">
-<h1>Who is taking care of the animal<i class="fa fa-paw" aria-hidden="true"></i></h1>
-<br/>
+    <h1>Who is taking care of the animal<i class="fa fa-paw" aria-hidden="true"></i></h1>
+    <br/>
 
-<form method="POST">
-	{% csrf_token %}
+    <form method="POST">
+        {% csrf_token %}
 
-	{{ form.as_p }}
+        {{ form.as_p }}
 
-<br/>
-  <button type="submit" class="btn btn-primary">Update Record</button>
-	<a href="{% url 'under_my_care'  %}" class="btn btn-secondary">Back</a>
+        <br/>
+        <button type="submit" class="btn btn-primary">Update Record</button>
+        <a href="{% url 'under_my_care'  %}" class="btn btn-secondary">Back</a>
 
-</form>
-<br><br>
+    </form>
+    <br><br>
 </div>
 
 {% endblock %}

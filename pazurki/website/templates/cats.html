@@ -4,58 +4,75 @@
 {% load website_extras %}
 
 <div class="w3-grayscale">
-<div class="row">
-    <div class="col">
-        <div class="card card-body">
-            <form method="get">
-                {{myFilter.form}}
-                <input type="submit" value="Search">
-            </form>
+    <div class="row">
+        <div class="col">
+            <div class="card card-body">
+                <form method="get">
+                    {{myFilter.form}}
+                    <input type="submit" value="Search">
+                </form>
+            </div>
         </div>
     </div>
-</div>
 
-{% if page_obj %}
-        <div class="row row-cols-1 row-cols-md-3 g-1">
-		{% for record in page_obj %}
-            <div class="col">
-                <div class="card text-center" style="width:page-width;">
-                      <div class="card-body">
-                        <h5 class="card-title">{{ record.name }}</h5>
-                        <p class="card-text">
-                            <td>Breed: {{ record.breed }}</td> <br/>
-                            <td>Species: {{ record.species }}</td><br/>
-                            <td>Sex: {{ record.sex }}</td><br/>
-                            <td>Age: {{ record.age }}</td><br/>
-                            <td>Size: {{ record.size }}</td><br/>
-                            <td>Vaccinations: {{ record.vaccinations }}</td><br/>
-                            <td>Sterilization: {{ record.sterilization }}</td><br/>
-                            <td>Friendly to kids: {{ record.friendly_kids }}</td><br/>
-                            <td>Friendly to other animals: {{ record.friendly_others }}</td><br/>
-                        </p>
-                      </div>
+    {% if page_obj %}
+    <div class="row row-cols-1 row-cols-md-3 g-2">
+        {% for record in page_obj %}
+        <div class="col">
+            <img src="{{record.img.url}}" width=300 height=500 class="card-img-top rounded-start">
+            <div class="card text-center" style="width:page-width;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ record.name }}</h5>
+                    <p class="card-text">
+                    <td>Breed: {{ record.breed }}</td>
+                    <br/>
+                    <td>Species: {{ record.species }}</td>
+                    <br/>
+                    <td>Sex: {{ record.sex }}</td>
+                    <br/>
+                    <td>Age: {{ record.age }}</td>
+                    <br/>
+                    <td>Size: {{ record.size }}</td>
+                    <br/>
+                    <td>Vaccinations: {{ record.vaccinations }}</td>
+                    <br/>
+                    <td>Sterilization: {{ record.sterilization }}</td>
+                    <br/>
+                    <td>Friendly to kids: {{ record.friendly_kids }}</td>
+                    <br/>
+                    <td>Friendly to other animals: {{ record.friendly_others }}</td>
+                    <br/>
+                    </p>
                 </div>
-                <br/>
             </div>
-		{% endfor %}
+            <br/>
         </div>
-{% endif %}
+        {% endfor %}
+    </div>
+    {% endif %}
 </div>
 
 <div class="pagination justify-content-center">
     <ul class="pagination">
         {%if page_obj.has_previous%}
-        <li class="page-item"><a class="page-link" href="{% my_url 1 'page' request.GET.urlencode %}">&laquo; First</a></li>
-        <li class="page-item"><a class="page-link" href="{% my_url page_obj.previous_page_number 'page' request.GET.urlencode %}">Previous Page</a></li>
+        <li class="page-item"><a class="page-link" href="{% my_url 1 'page' request.GET.urlencode %}">&laquo; First</a>
+        </li>
+        <li class="page-item"><a class="page-link"
+                                 href="{% my_url page_obj.previous_page_number 'page' request.GET.urlencode %}">Previous
+            Page</a></li>
         {%endif%}
 
-<!--        <span class="current">-->
-<!--            Page {{page_obj.number}} of {{page_obj.paginator.num_pages}}-->
-<!--        </span>-->
+        <!--        <span class="current">-->
+        <!--            Page {{page_obj.number}} of {{page_obj.paginator.num_pages}}-->
+        <!--        </span>-->
 
         {%if page_obj.has_next%}
-        <li class="page-item"><a class="page-link" href="{% my_url page_obj.next_page_number 'page' request.GET.urlencode %}">Next Page</a></li>
-        <li class="page-item"><a class="page-link" href="{% my_url page_obj.paginator.num_pages 'page' request.GET.urlencode %}">&raquo; Last</a></li>
+        <li class="page-item"><a class="page-link"
+                                 href="{% my_url page_obj.next_page_number 'page' request.GET.urlencode %}">Next
+            Page</a></li>
+        <li class="page-item"><a class="page-link"
+                                 href="{% my_url page_obj.paginator.num_pages 'page' request.GET.urlencode %}">&raquo;
+            Last</a></li>
         {%endif%}
     </ul>
 </div>

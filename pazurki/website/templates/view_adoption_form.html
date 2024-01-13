@@ -2,36 +2,36 @@
 {% block content %}
 <body>
 <div class="col-md-6 offset-md-3">
-<br>
-<table class="table table-striped table-hover table-bordered">
-	<thead class="table-dark" align="center">
-		<tr>
-			<th scope="col">Name</th>
-			<th scope="col">Surname</th>
-			<th scope="col">Telephone</th>
-			<th scope="col">Animal</th>
-			<th scope="col">Status</th>
-			<th scope="col">ID</th>
-		</tr>
-	</thead>
-	<tbody>
+    <br>
+    <table class="table table-striped table-hover table-bordered">
+        <thead class="table-dark" align="center">
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Surname</th>
+            <th scope="col">Telephone</th>
+            <th scope="col">Animal</th>
+            <th scope="col">Status</th>
+            <th scope="col">ID</th>
+        </tr>
+        </thead>
+        <tbody>
 
 
-	{% if records %}
-		{% for record in records %}
-			<tr align="center">
-				<td>{{ record.name }}</td>
-				<td>{{ record.surname }}</td>
-				<td>{{ record.telephone }}</td>
-				<td>{{ record.animal }}</td>
-				<td>{{ record.status }}</td>
-				<td><a href="{% url 'adoption_record' record.id_adopt_form %}">{{ record.id_adopt_form }}</td>
-			</tr>
-		{% endfor %}
+        {% if records %}
+        {% for record in records %}
+        <tr align="center">
+            <td>{{ record.name }}</td>
+            <td>{{ record.surname }}</td>
+            <td>{{ record.telephone }}</td>
+            <td>{{ record.animal }}</td>
+            <td>{{ record.status }}</td>
+            <td><a href="{% url 'adoption_record' record.id_adopt_form %}">{{ record.id_adopt_form }}</td>
+        </tr>
+        {% endfor %}
 
-	{% endif %}
-	</tbody>
-</table>
+        {% endif %}
+        </tbody>
+    </table>
 </div>
 
 

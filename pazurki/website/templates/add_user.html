@@ -3,15 +3,15 @@
 <body style="background-color:rgb(255, 249, 246);">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="col-md-6 offset-md-3">
-<h1>Add new worker<i class="fa fa-paw" aria-hidden="true"></i></h1>
-<br/>
+    <h1>Add new worker<i class="fa fa-paw" aria-hidden="true"></i></h1>
+    <br/>
 
-<form method="POST" action="">
-	{% csrf_token %}
-	{{ form.as_p }}
-	<br/>
-  	<button type="submit" class="btn btn-primary">Add</button>
-</form>
+    <form method="POST" action="">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <br/>
+        <button type="submit" class="btn btn-primary">Add</button>
+    </form>
 
 </div>
 

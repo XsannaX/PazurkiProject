@@ -12,15 +12,18 @@ admin.site.register(Connector)
 admin.site.register(Workers)
 admin.site.register(Adoption_history)
 
+
 # Mix Profile info into User info
 class ProfileInline(admin.StackedInline):
-	model = Workers
+    model = Workers
+
 
 # Extend User Model
 class UserAdmin(admin.ModelAdmin):
-	model = User
-	fields = ["username","first_name","last_name","password","is_staff","is_active","is_superuser"]
-	inlines = [ProfileInline]
+    model = User
+    fields = ["username", "first_name", "last_name", "password", "is_staff", "is_active", "is_superuser"]
+    inlines = [ProfileInline]
+
 
 # Unregister initial User
 admin.site.unregister(User)

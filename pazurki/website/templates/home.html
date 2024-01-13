@@ -2,13 +2,13 @@
 {%load static%}
 {% block content %}
 <head>
-<title>W3.CSS Template</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
-<style>
+    <title>W3.CSS Template</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+    <style>
 body, html {
   height: 100%;
   font-family: "Inconsolata", sans-serif;
@@ -24,52 +24,70 @@ body, html {
 .menu {
   display: none;
 }
-</style>
+
+    </style>
 </head>
 <body>
 
 
 <header class="bgimg w3-display-container w3-grayscale-min" id="home">
-  <div class="w3-display-top w3-center">
-    <span class="w3-text-black" style="font-family:Playfair Display;font-size:90px">Paws<br>Animal Shelter</span>
-  </div>
+    <div class="w3-display-top w3-center">
+        <span class="w3-text-black" style="font-family:Playfair Display;font-size:90px">Paws<br>Animal Shelter</span>
+    </div>
 </header>
 
 
 <div class="w3-sand w3-grayscale w3-large">
 
 
-<div class="w3-container" id="about">
-  <div class="w3-content" style="max-width:700px">
-    <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">ABOUT THE SHELTER</span></h5>
-    <p>Welcome to Paws, a haven for the voiceless and a sanctuary for those who speak through wagging tails, gentle purrs, and hopeful eyes. Founded with a deep-rooted passion for animals, Paws is more than just a shelter; it's a commitment to compassion, care, and creating a brighter future for our furry friends.</p>
-    <p>At Paws, our mission is clear: to provide a second chance at happiness for every animal that crosses our threshold. We believe in a world where no soul is left behind, and every creature deserves love, warmth, and a forever home. With unwavering dedication, our team works tirelessly to rescue, rehabilitate, and rehome animals in need, giving them the opportunity to thrive in a loving environment.</p>
-    <p>Our shelter is more than just a place of refuge; it's a community of animal lovers, volunteers, and advocates who share a common goal—to make a positive impact on the lives of our four-legged companions. Together, we strive to raise awareness about responsible pet ownership, promote spaying and neutering, and foster a culture of empathy towards all living beings.</p>
-    <p>Paws is not just a shelter; it's a haven where tails are wagged, hearts are healed, and families are formed. Our dedicated staff and volunteers pour their hearts into providing the best care possible for our residents, ensuring they receive the love and attention they deserve. We believe that every animal is unique, and we take the time to understand their individual needs, quirks, and personalities to match them with the perfect forever home. </p>
-    <img src="{% static 'img/logo.jpg' %}" style="width:100%;max-width:1000px" class="w3-margin-top">
-  </div>
-</div>
+    <div class="w3-container" id="about">
+        <div class="w3-content" style="max-width:700px">
+            <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">ABOUT THE SHELTER</span></h5>
+            <p>Welcome to Paws, a haven for the voiceless and a sanctuary for those who speak through wagging tails,
+                gentle purrs, and hopeful eyes. Founded with a deep-rooted passion for animals, Paws is more than just a
+                shelter; it's a commitment to compassion, care, and creating a brighter future for our furry
+                friends.</p>
+            <p>At Paws, our mission is clear: to provide a second chance at happiness for every animal that crosses our
+                threshold. We believe in a world where no soul is left behind, and every creature deserves love, warmth,
+                and a forever home. With unwavering dedication, our team works tirelessly to rescue, rehabilitate, and
+                rehome animals in need, giving them the opportunity to thrive in a loving environment.</p>
+            <p>Our shelter is more than just a place of refuge; it's a community of animal lovers, volunteers, and
+                advocates who share a common goal—to make a positive impact on the lives of our four-legged companions.
+                Together, we strive to raise awareness about responsible pet ownership, promote spaying and neutering,
+                and foster a culture of empathy towards all living beings.</p>
+            <p>Paws is not just a shelter; it's a haven where tails are wagged, hearts are healed, and families are
+                formed. Our dedicated staff and volunteers pour their hearts into providing the best care possible for
+                our residents, ensuring they receive the love and attention they deserve. We believe that every animal
+                is unique, and we take the time to understand their individual needs, quirks, and personalities to match
+                them with the perfect forever home. </p>
+            <img src="{% static 'img/logo.jpg' %}" style="width:100%;max-width:1000px" class="w3-margin-top">
+        </div>
+    </div>
 
 
-
-<div class="w3-container" id="where" style="padding-bottom:32px;">
-  <div class="w3-content" style="max-width:700px">
-    <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">WHERE TO FIND US</span></h5>
-    <p>We welcome your inquiries, support, and collaboration. If you have questions, would like to adopt, volunteer, or contribute in any way, please feel free to reach out to us. Your involvement makes a significant impact on the lives of the animals we care for.</p>
-    <img src="{% static 'img/map.jpg' %}" style="width:100%;max-width:1000px" class="w3-margin-top">
-    <p><i class="fa fa-map-marker"></i> 194 West Route 10 (behind Petsmart)<br>East Hanover, NJ 07936 </p>
-    <p><i class="fa fa-phone"></i> 973-787-940 </p>
-    <p><i class="fa fa-envelope-o"></i> info@pawsshelter.org </p>
-    <p><span class="w3-tag">FYI!</span> Please note that visits to our shelter and clinic are by appointment only.</p>
-  </div>
-</div>
+    <div class="w3-container" id="where" style="padding-bottom:32px;">
+        <div class="w3-content" style="max-width:700px">
+            <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">WHERE TO FIND US</span></h5>
+            <p>We welcome your inquiries, support, and collaboration. If you have questions, would like to adopt,
+                volunteer, or contribute in any way, please feel free to reach out to us. Your involvement makes a
+                significant impact on the lives of the animals we care for.</p>
+            <img src="{% static 'img/map.jpg' %}" style="width:100%;max-width:1000px" class="w3-margin-top">
+            <p><i class="fa fa-map-marker"></i> 194 West Route 10 (behind Petsmart)<br>East Hanover, NJ 07936 </p>
+            <p><i class="fa fa-phone"></i> 973-787-940 </p>
+            <p><i class="fa fa-envelope-o"></i> info@pawsshelter.org </p>
+            <p><span class="w3-tag">FYI!</span> Please note that visits to our shelter and clinic are by appointment
+                only.</p>
+        </div>
+    </div>
 
 
 </div>
 
 
 <footer class="w3-center w3-light-grey w3-padding-48 w3-large">
-<p>Join us in our journey to create a world where every animal is treated with kindness, respect, and compassion. Whether you're looking to adopt a new furry family member, volunteer your time, or support our cause, Paws welcomes you with open arms. Together, let's make a difference, one paw at a time.</p>
+    <p>Join us in our journey to create a world where every animal is treated with kindness, respect, and compassion.
+        Whether you're looking to adopt a new furry family member, volunteer your time, or support our cause, Paws
+        welcomes you with open arms. Together, let's make a difference, one paw at a time.</p>
 </footer>
 
 

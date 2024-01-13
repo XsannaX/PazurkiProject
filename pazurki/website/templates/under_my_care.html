@@ -4,22 +4,22 @@
     <title>Connector Table</title>
 </head>
 <div class="col-md-6 offset-md-3">
-<body>
-<br>
-<div align="center">
-    <button onclick="showAllAnimals()">Show All Animals</button>
-    <button onclick="showMyAnimals()">Show My Animals</button>
-</div>
-<br>
-<table class="table table-bordered table-striped table-hover" id="animalTable">
-    <thead class="table-dark" align="center">
+    <body>
+    <br>
+    <div align="center">
+        <button onclick="showAllAnimals()">Show All Animals</button>
+        <button onclick="showMyAnimals()">Show My Animals</button>
+    </div>
+    <br>
+    <table class="table table-bordered table-striped table-hover" id="animalTable">
+        <thead class="table-dark" align="center">
         <tr>
             <th scope="col">ID</th>
             <th scope="col">Animal</th>
             <th scope="col">Worker</th>
         </tr>
-    </thead>
-    <tbody class="table-group-divider">
+        </thead>
+        <tbody class="table-group-divider">
         {% for connector in all_animals %}
         <tr align="center">
             <td><a href="{% url 'connector' connector.id_connector %}">{{ connector.id_connector }}</td>
@@ -27,10 +27,10 @@
             <td contenteditable="true">{{ connector.worker.user.username }}</td>
         </tr>
         {% endfor %}
-    </tbody>
-</table>
+        </tbody>
+    </table>
 
-<script>
+    <script>
     function showAllAnimals() {
         var table = document.getElementById("animalTable");
         var rows = table.getElementsByTagName("tr");
@@ -51,9 +51,10 @@
             rows[i].style.display = showRow ? "" : "none";
         }
     }
-</script>
 
-</body>
+    </script>
+
+    </body>
 </div>
 
 

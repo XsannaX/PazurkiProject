@@ -4,19 +4,19 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <body style="background-image: url('{%static 'img/opt6.jpg' %}');">
 <div class="col-md-6 offset-md-3">
-<h1>Adoption Form<i class="fa fa-paw" aria-hidden="true"></i></h1>
-<br/>
+    <h1>Adoption Form<i class="fa fa-paw" aria-hidden="true"></i></h1>
+    <br/>
 
-<form method="POST" action="{% url 'adopt' %}">
-	{% csrf_token %}
+    <form method="POST" action="{% url 'adopt' %}">
+        {% csrf_token %}
 
-	{{ form.as_p }}
+        {{ form.as_p }}
 
-<br/>
-  <button type="submit" class="btn btn-primary">Submit</button>
-   <a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
+        <br/>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
 
-</form>
+    </form>
 
 </div>
 </body>

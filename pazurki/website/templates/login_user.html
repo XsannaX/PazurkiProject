@@ -2,27 +2,27 @@
 {% block content %}
 
 <div class="col-md-6 offset-md-3">
-  {% if user.is_authenticated %}
-  <h1>You are already logged in:)))</h1>
+    {% if user.is_authenticated %}
+    <h1>You are already logged in:)))</h1>
 
-  {% else %}
+    {% else %}
 
-  <h1>Login</h1>
-  <form method="POST" action="{% url 'login_user' %}">
-    {% csrf_token %}
-    <form>
-  <div class="mb-3">
-    <label>Username</label>
-    <input type="text" class="form-control" name="username", placeholder="username" required>
-  </div>
-  <div class="mb-3">
-    <label>Password</label>
-    <input type="password" class="form-control" name="password", placeholder="password" required>
-  </div>
-  <button type="submit" class="btn btn-primary">Login</button>
-</form>
-  </form>
+    <h1>Login</h1>
+    <form method="POST" action="{% url 'login_user' %}">
+        {% csrf_token %}
+        <form>
+            <div class="mb-3">
+                <label>Username</label>
+                <input type="text" class="form-control" name="username" , placeholder="username" required>
+            </div>
+            <div class="mb-3">
+                <label>Password</label>
+                <input type="password" class="form-control" name="password" , placeholder="password" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+    </form>
 
-  {% endif %}
+    {% endif %}
 </div>
 {% endblock %}
